@@ -9,7 +9,7 @@
 # and check if both hashmaps are same.
 # time complexity will be O(N)
 def IsAnagream(s: str, t: str):
-    # check if the strings are of different lengths
+    # check if the strings are of different lengths then they are not anagrams
     if len(s) != len(t):
         return False
     # create two dictionary
@@ -39,11 +39,11 @@ def sortedWay(s: str, t: str):
         return False
     return sorted(s) == sorted(t)
 
-# tast case
+# test case
 s = "@elloy"
 t = "olle@o"
 
-#outputs
+# calling function and printing outputs
 print("First Approach using dictionary")
 print(IsAnagream(s, t))
 print("Second Approach using inbuilt sort function")
