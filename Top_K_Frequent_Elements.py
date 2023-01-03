@@ -15,19 +15,32 @@ def firstWay(nums:list[int], k: int):
     for n in nums:
         d[n] = 1 + d.get(n, 0)
     sorted_dict = dict(sorted(d.items(), key=operator.itemgetter(1), reverse=True))
-    print(sorted_dict)
-    keylist=[]
+    #print(sorted_dict)
+    keylist = []
     for x in sorted_dict.keys():
         keylist.append(x)
-    print(keylist)
+    #print(keylist)
     return keylist[:k]
 
 # SECOND WAY WITH TIME COMPLEXITY OF O(n).
 # Here time complexity of our algorithm must be O(n).
 # We can use dictionary to figure out the occurrences of each element
 # And we will make an array of size len(nums) + 1 where we will use occurrence as indices and list of numbers with same
-# occurrence as values.
+# occurrence as values. After that we will iterate through the array reversely so, we get the highest occurrence.
 
+def secondWay(nums:list[int], k: int):
+    count = {}
+    for n in nums:
+        count[n] = 1 + count.get(n, 0)
+    occurrence = [[] for i in range(len(nums) + 1)]
+    for n, c in count.items():
+        occurrence[c].append(n)
+    result = []
+    for i in range(len(occurrence)-1, 0, -1):
+        for n in occurrence[i]:
+            result.append(n)
+            if len(result) == k:
+                return result
 
 
 # Testing
@@ -38,3 +51,4 @@ print("First way with time complexity of the O(n log n) ")
 print(firstWay(n, k))
 
 print("Second way with the time complexity of O(n)")
+print(secondWay(n, k))
