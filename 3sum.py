@@ -31,7 +31,7 @@ def threeSum(self, nums: List[int]) -> List[List[int]]:
                     # is the same.
                     l += 1
     return res
-    return res
+
 
 
 # testing
