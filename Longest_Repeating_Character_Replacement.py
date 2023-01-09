@@ -5,14 +5,22 @@
 from self import self
 
 def characterReplacement(self, s: str, k: int) -> int:
-    pass
-
-
-
+        count = {}
+        result = 0
+        maxCount = 0
+        l = 0
+        for r in range(len(s)):
+            count[s[r]] = 1 + count.get(s[r], 0)
+            maxCount = max(maxCount, count[s[r]])
+            while (r - l + 1) - maxCount > k:
+                count[s[l]] -= 1
+                l += 1
+            result = max(result, r - l + 1)
+        return result
 
 
 
 # testing
-s = "AABABBA",
+s="AABABBA"
 k = 1
 print(characterReplacement(self, s, k))
